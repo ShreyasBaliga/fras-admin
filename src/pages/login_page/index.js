@@ -31,7 +31,7 @@ class LogIn extends React.Component {
         firebase
           .auth()
           .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-          .then(() => history.push('/cases'));
+          .then(() => history.replace('/cases'));
       })
       .catch(function (error) {
         alert("Email or Password wrong.Please try again");

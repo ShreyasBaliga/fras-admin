@@ -3,8 +3,6 @@ import ReactList from 'react-list';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -85,7 +83,7 @@ class CasesPage extends React.Component {
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="white">
                         MISSING FROM
                         </Box>
-                    <Button onClick={() => history.push("/details/" + this.state.casesData[index].data().issueNumber)} variant="contained" style={{ marginTop: "10px", backgroundColor: "#34E795", color: "white", width: "250px", borderWidth: "2px" }}>
+                    <Button onClick={() => history.push("sightings", { personData: this.state.casesData[index].data() })} variant="contained" style={{ marginTop: "10px", backgroundColor: "#34E795", color: "black", width: "250px", borderWidth: "2px" }}>
                         MORE INFO
                     </Button>
                 </Typography>
@@ -100,7 +98,7 @@ class CasesPage extends React.Component {
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="#34E795">
                         {this.state.casesData[index].data().missingFrom}
                     </Box>
-                    <Button variant="outlined" style={{ marginTop: "10px", borderColor: "white", color: "white", width: "250px", borderWidth: "2px" }}>
+                    <Button onClick={() => history.push('details', { personData: this.state.casesData[index].data() })} variant="outlined" style={{ marginTop: "10px", borderColor: "white", color: "white", width: "250px", borderWidth: "2px" }}>
                         UPDATE INFO
                     </Button>
                 </Typography>
@@ -136,9 +134,9 @@ class CasesPage extends React.Component {
                             </Typography>
                         </div>
                         <div style={{ width: "33%", textAlign: "right" }} >
-                            <IconButton onClick={() => history.goBack()} style={{ color: "white" }}>
-                                <ArrowBackIcon />
-                            </IconButton>
+                            <Button onClick={() => firebase.auth().signOut()} variant="outlined" style={{ borderRadius: "15px", backgroundColor: "#222222", borderColor: "white", color: "white", borderWidth: "2px" }}>
+                                LOGOUT
+                            </Button>
                         </div>
                     </div >
 

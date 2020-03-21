@@ -1,0 +1,9 @@
+table{
+    width: 100%;
+}
+tr{
+    margin: 20px 20px;
+}
+tr:nth-child(odd) {
+    background: rgba(74, 74, 74, 0.18)
+}
