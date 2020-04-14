@@ -1,4 +1,4 @@
-.root{
+.cases_page_container{
     position: absolute;
     top: 0;
     left: 0;
@@ -7,11 +7,4 @@
     overflow: hidden;
     padding: 25px 50px;
     background-color:#222222 ;
-    /* background: linear-gradient(#3a3939de, #3a3939de),
-    linear-gradient(#222222, #222222);
-background-size: 15% 100%,
-         85% 100%;
-         background-position: 0% top,
-         calc(85% * 100 / (100 - 15)) top;
-background-repeat: no-repeat; */
 }

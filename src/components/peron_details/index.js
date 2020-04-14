@@ -24,6 +24,7 @@ function Row(props) {
 class PersonDetails extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props.personData)
     }
     Row(props) {
         return <tr>
@@ -42,13 +43,13 @@ class PersonDetails extends React.Component {
         </tr>
     }
     render() {
-        const d = new Date(this.props.personData.missingDate)
+        const d = new Date(this.props.personData.missingDate);
         const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(d)
         return (
             <Grid container spacing={5}>
                 <Grid item xs={4} >
-                    <div style={{ width: "100%" }}>
+                    <div>
                         <img style={{
                             width: "auto",
                             height: "450px",
@@ -66,7 +67,7 @@ class PersonDetails extends React.Component {
                                     {this.props.personData.name}
                                 </Box>
                                 <Box fontSize={20} fontFamily="Consolas" fontWeight="fontWeightLight" m={1}>
-                                    IFRA ALERT NO. {this.props.personData.issueNumber}
+                                    {this.props.personData.issueNumber === undefined ? "IFRA ALERT NOT SENT" : "IFRA ALERT NO." + this.props.personData.issueNumber}
                                 </Box>
                             </div>
                         </tr>
@@ -81,7 +82,7 @@ class PersonDetails extends React.Component {
                         <Row propertyName="WEIGHT" value={this.props.personData.weight} />
                     </table>
                 </Grid>
-            </Grid>
+            </Grid >
         );
     }
 }
