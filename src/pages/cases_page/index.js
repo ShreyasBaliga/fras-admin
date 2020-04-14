@@ -93,12 +93,12 @@ class CasesPage extends React.Component {
                         IFRA ALERT ISSUE NO .{this.state.casesData[index].data().issueNumber}
                     </Box>
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="#34E795" lineHeight="100px">
-                        MISSING
-                        </Box>
+                        {this.state.casesData[index].data().childFound ? "FOUND" : "MISSING"}
+                    </Box>
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="#34E795">
                         {this.state.casesData[index].data().missingFrom}
                     </Box>
-                    <Button onClick={() => history.push('details', { personData: this.state.casesData[index].data() })} variant="outlined" style={{ marginTop: "10px", borderColor: "white", color: "white", width: "250px", borderWidth: "2px" }}>
+                    <Button onClick={() => history.push('details', { issueNumber: this.state.casesData[index].data().issueNumber })} variant="outlined" style={{ marginTop: "10px", borderColor: "white", color: "white", width: "250px", borderWidth: "2px" }}>
                         UPDATE INFO
                     </Button>
                 </Typography>
@@ -119,10 +119,10 @@ class CasesPage extends React.Component {
                 <ColorLinearProgress />
             </div >
         ) : (
-                <div className="root">
+                <div className="cases_page_container">
                     <div style={{ width: "100%", display: "flex" }}>
                         <div style={{ width: "33%", paddingLeft: "25px" }}>
-                            <Button variant="outlined" style={{ borderRadius: "15px", backgroundColor: "#222222", borderColor: "white", color: "white", borderWidth: "2px" }}>
+                            <Button onClick={() => history.push("add_case_personal", { personData: undefined })} variant="outlined" style={{ borderRadius: "15px", backgroundColor: "#222222", borderColor: "white", color: "white", borderWidth: "2px" }}>
                                 + ADD ALERT
                             </Button>
                         </div>

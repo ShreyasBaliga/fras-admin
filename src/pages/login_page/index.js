@@ -50,7 +50,7 @@ class LogIn extends React.Component {
   }
   render() {
     return (
-      <div className="main">
+      <div className="login_page_container">
         <div className="above">
           <center>
             <Typography component="div" style={{ display: "inline-block" }}>
@@ -68,8 +68,8 @@ class LogIn extends React.Component {
               >
                 <TextValidator
                   fullWidth
-                  autoFocus
                   margin="normal"
+                  type="text"
                   label="Email"
                   onChange={this.handleEmail}
                   name="email"

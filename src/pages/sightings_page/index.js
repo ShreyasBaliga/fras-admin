@@ -69,7 +69,7 @@ class SightingsPage extends React.Component {
             </div >
 
         ) : (
-                <div className="root">
+                <div className="sighting_page_container">
                     <div style={{ display: "flex" }} >
                         <img style={{
                             width: "10%",
@@ -89,7 +89,7 @@ class SightingsPage extends React.Component {
                                 ISSUE NO .{this.state.personData.issueNumber}
                             </Box>
                         </Typography>
-                        <div style={{ width: "80%", display: "inline-block" }} />
+                        <div style={{ width: "90%", display: "inline-block" }} />
                         <div>
                             <IconButton onClick={() => history.goBack()} style={{ color: "white" }}>
                                 <ArrowBackIcon />
