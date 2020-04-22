@@ -78,7 +78,7 @@ class AddCasePageTwo extends React.Component {
         }
         else {
             this.personData.missingFrom = this.state.missingFrom;
-            this.personData.missingDate = this.state.selectedDate.toString();
+            this.personData.missingDate = this.state.selectedDate.toISOString();
             this.personData.lastWearing = this.state.lastWearing;
             this.personData.additionalInfo = this.state.additionalInfo;
             this.personData.lat = this.state.lat;

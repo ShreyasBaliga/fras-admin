@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "ifra-admin",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
