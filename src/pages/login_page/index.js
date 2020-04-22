@@ -55,7 +55,8 @@ class LogIn extends React.Component {
           <center>
             <Typography component="div" style={{ display: "inline-block" }}>
               <Box fontSize={40} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color="white">
-                m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                {/* m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng */}
+                F.R.A.S
                         </Box>
             </Typography>
           </center>
