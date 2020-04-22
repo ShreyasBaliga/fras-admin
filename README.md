@@ -2,4 +2,4 @@
 Admin panel for IFRA
 
 The panel can be accessed at :
-https://ifra-admin.web.app/
+https://ifra-admin.firebaseapp.com/
