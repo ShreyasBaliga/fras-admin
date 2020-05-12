@@ -6,11 +6,12 @@ import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
 
-
 import './index.css'
 import history from '../../../history';
 import firebase from "../../../firebase_config"
 import PersonDetails from "../../../components/peron_details"
+
+const axios = require('axios');
 
 var storageRef = firebase.storage().ref();
 var db = firebase.firestore();
@@ -40,32 +41,45 @@ class AddCasePageThree extends React.Component {
     uploadDetails(imageUrl) {
 
         if (this.personData.issueNumber === undefined) {
-            db.collection('next_issue_number').doc('number').get().then(function (doc) {
-                db.collection('missing_persons').doc(doc.data().issueNumber.toString()).set({
-                    missingDate: this.personData.missingDate,
-                    imageUrl: imageUrl === undefined ? this.personData.imageUrl : imageUrl,
-                    name: this.personData.name,
-                    issueNumber: doc.data().issueNumber,
-                    missingFrom: this.personData.missingFrom,
-                    age: parseInt(this.personData.age),
-                    sex: this.personData.sex,
-                    race: this.personData.race,
-                    hairColor: this.personData.hairColor,
-                    eyeColor: this.personData.eyeColor,
-                    height: parseFloat(this.personData.height),
-                    weight: parseFloat(this.personData.weight),
-                    lastWearing: this.personData.lastWearing,
-                    additionalInfo: this.personData.additionalInfo,
-                    lat: this.personData.lat,
-                    lng: this.personData.lng,
-                    childFound: false
-                }).then(function (snapshot) {
-                    db.collection('next_issue_number').doc('number').set({
-                        issueNumber: doc.data().issueNumber + 1,
-                    }).then((d) => history.replace("details", { issueNumber: doc.data().issueNumber }))
-                }.bind(this));
-            }.bind(this)
-            );
+
+            let data = JSON.stringify({
+                url: imageUrl === undefined ? this.personData.imageUrl : imageUrl,
+            });
+
+            axios
+                .post('https://southeastasia.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&recognitionModel=recognition_02&returnRecognitionModel=false&detectionModel=detection_02',
+                    data,
+                    {
+                        headers: { 'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': 'e466501640774684ab08c3283e58243e' }
+                    }).then( res => {
+                        db.collection('next_issue_number').doc('number').get().then(function (doc) {
+                            db.collection('missing_persons').doc(doc.data().issueNumber.toString()).set({
+                                missingDate: this.personData.missingDate,
+                                imageUrl: imageUrl === undefined ? this.personData.imageUrl : imageUrl,
+                                name: this.personData.name,
+                                issueNumber: doc.data().issueNumber,
+                                missingFrom: this.personData.missingFrom,
+                                age: parseInt(this.personData.age),
+                                sex: this.personData.sex,
+                                race: this.personData.race,
+                                hairColor: this.personData.hairColor,
+                                eyeColor: this.personData.eyeColor,
+                                height: parseFloat(this.personData.height),
+                                weight: parseFloat(this.personData.weight),
+                                lastWearing: this.personData.lastWearing,
+                                additionalInfo: (this.personData.additionalInfo === undefined) ? "" : this.personData.additionalInfo,
+                                lat: this.personData.lat,
+                                lng: this.personData.lng,
+                                childFound: false,
+                                faceId: res.data[0]['faceId']
+                            }).then(function (snapshot) {
+                                db.collection('next_issue_number').doc('number').set({
+                                    issueNumber: doc.data().issueNumber + 1,
+                                }).then((d) => history.replace("details", { issueNumber: doc.data().issueNumber }))
+                            }.bind(this));
+                        }.bind(this)
+                        );
+                    });
         }
         else {
             db.collection('missing_persons').doc(this.personData.issueNumber.toString()).update({
@@ -81,7 +95,7 @@ class AddCasePageThree extends React.Component {
                 height: parseFloat(this.personData.height),
                 weight: parseFloat(this.personData.weight),
                 lastWearing: this.personData.lastWearing,
-                additionalInfo: this.personData.additionalInfo,
+                additionalInfo: (this.personData.additionalInfo === undefined) ? "" : this.personData.additionalInfo,
                 lat: this.personData.lat,
                 lng: this.personData.lng,
             }).then(function (snapshot) {

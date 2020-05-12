@@ -90,7 +90,7 @@ class CasesPage extends React.Component {
                 <div style={{ width: "30px", display: "inline-block" }}></div>
                 <Typography component="div" style={{ display: "inline-block" }}>
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="#34E795">
-                        IFRA ALERT ISSUE NO .{this.state.casesData[index].data().issueNumber}
+                        FRAS ALERT ISSUE NO. {this.state.casesData[index].data().issueNumber}
                     </Box>
                     <Box fontFamily="Consolas" fontSize={30} fontWeight="fontWeightLight" m={1} color="#34E795" lineHeight="100px">
                         {this.state.casesData[index].data().childFound ? "FOUND" : "MISSING"}
