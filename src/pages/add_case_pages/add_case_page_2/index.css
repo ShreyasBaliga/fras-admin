@@ -35,6 +35,7 @@ label{
     border-bottom: 1px solid #313131;
     columns: #535353;
     background-color: #222222;
+    color:#d1c6c6;
 }
 .input:focus{
     border-bottom: 1px solid #34E795; 

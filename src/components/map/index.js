@@ -30,10 +30,16 @@ class Map extends React.Component {
     this.props.sightings.forEach(function (sighting) {
 
       var outer = document.createElement("div");
-      var inner = document.createElement("div");
+      // var inner = document.createElement("div");
       outer.className = "outer";
-      inner.className = "inner";
-      outer.appendChild(inner);
+      // inner.className = "inner";
+      // outer.appendChild(inner);
+      outer.style.backgroundColor = "#FF0033"
+      if (sighting.data().accuracy > 0.6)
+        outer.style.backgroundColor = "#34E795"
+      else if (sighting.data().accuracy > 0.4 && sighting.data().accuracy < 0.59)
+        outer.style.backgroundColor = "#FFF23A"
+
       new mapboxgl.Marker(outer)
         .setLngLat([sighting.data().longitude, sighting.data().latitude])
         .addTo(map);

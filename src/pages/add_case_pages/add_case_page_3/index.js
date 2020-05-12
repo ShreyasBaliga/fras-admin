@@ -51,7 +51,7 @@ class AddCasePageThree extends React.Component {
                     data,
                     {
                         headers: { 'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': 'e466501640774684ab08c3283e58243e' }
-                    }).then( res => {
+                    }).then(res => {
                         db.collection('next_issue_number').doc('number').get().then(function (doc) {
                             db.collection('missing_persons').doc(doc.data().issueNumber.toString()).set({
                                 missingDate: this.personData.missingDate,
@@ -67,7 +67,7 @@ class AddCasePageThree extends React.Component {
                                 height: parseFloat(this.personData.height),
                                 weight: parseFloat(this.personData.weight),
                                 lastWearing: this.personData.lastWearing,
-                                additionalInfo: (this.personData.additionalInfo === undefined) ? "" : this.personData.additionalInfo,
+                                additionalInfo: this.personData.additionalInfo === undefined ? "" : this.personData.additionalInfo,
                                 lat: this.personData.lat,
                                 lng: this.personData.lng,
                                 childFound: false,
@@ -95,7 +95,7 @@ class AddCasePageThree extends React.Component {
                 height: parseFloat(this.personData.height),
                 weight: parseFloat(this.personData.weight),
                 lastWearing: this.personData.lastWearing,
-                additionalInfo: (this.personData.additionalInfo === undefined) ? "" : this.personData.additionalInfo,
+                additionalInfo: this.personData.additionalInfo === undefined ? "" : this.personData.additionalInfo,
                 lat: this.personData.lat,
                 lng: this.personData.lng,
             }).then(function (snapshot) {
