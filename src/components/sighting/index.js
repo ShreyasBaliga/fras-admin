@@ -7,8 +7,6 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
 
-
-
 class Sightings extends React.Component {
   constructor(props) {
     super(props)
