@@ -130,7 +130,7 @@ class DetailsPage extends React.Component {
                 {this.state.childFound === false && <div style={{ display: "flex", width: "100%" }}>
                     <div style={{ width: "43%", textAlign: "right" }}>
                         <Button onClick={() => this.handleModalOpen()} variant="contained" style={{ backgroundColor: "#34E795", color: "black", width: "250px", borderWidth: "2px" }}>
-                            CHILD FOUND
+                            PERSON FOUND
                     </Button>
                     </div>
                     <div style={{ width: "5%" }} />
@@ -165,7 +165,7 @@ class DetailsPage extends React.Component {
                             <div style={{ width: "20px" }} />
                             <div>
                                 <Box fontFamily="Consolas" fontSize={40} fontWeight="fontWeightLight" m={1} color="black">
-                                    Is the child found?
+                                    Is the person found?
                             </Box>
                                 <div style={{ height: "20px" }} />
                                 <Button onClick={this.handleChildfound} variant="contained" style={{ backgroundColor: "#34E795", color: "black", width: "250px", borderWidth: "2px" }}>
