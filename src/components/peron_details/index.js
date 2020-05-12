@@ -67,7 +67,7 @@ class PersonDetails extends React.Component {
                                     {this.props.personData.name}
                                 </Box>
                                 <Box fontSize={20} fontFamily="Consolas" fontWeight="fontWeightLight" m={1}>
-                                    {this.props.personData.issueNumber === undefined ? "IFRA ALERT NOT SENT" : "IFRA ALERT NO." + this.props.personData.issueNumber}
+                                    {this.props.personData.issueNumber === undefined ? "FRAS ALERT NOT SENT" : "FRAS ALERT NO." + this.props.personData.issueNumber}
                                 </Box>
                             </div>
                         </tr>
