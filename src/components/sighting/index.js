@@ -29,6 +29,7 @@ class Sightings extends React.Component {
     })
   }
   render() {
+
     if (this.props.sightings === undefined)
       return (
         <table className="detail_table detail_table-scrollbar">
@@ -79,7 +80,7 @@ class Sightings extends React.Component {
                       color = "#34E795"
                     else if (sighting.data().accuracy > 0.4 && sighting.data().accuracy < 0.59)
                       color = "#FFF23A"
-                    console.log(color)
+
                     return (
                       <tr key={index} style={{ color: color, fontFamily: "Consolas" }}>
                         <td>{sighting.data().location}</td>
@@ -118,10 +119,10 @@ class Sightings extends React.Component {
                   borderRadius: "15px",
                   display: "inline-block"
                 }}
-                  src={this.state.selectedSighting.imageWithHighestAccuracy.image} />
+                  src={this.state.selectedSighting.imageWithHighestAccuracy.image === "" ? this.state.selectedSighting.images[0] : this.state.selectedSighting.imageWithHighestAccuracy.image} />
                 <div style={{ width: "20px", display: "inline-block" }}></div>
                 <Typography component="div" style={{ display: "inline-block" }}>
-                  <Box fontSize={33} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color="green">
+                  <Box fontSize={33} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color={this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.6 ? "#34E795" : this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.4 && this.state.selectedSighting.imageWithHighestAccuracy.accuracy < 0.59 ? "#FFF23A" : "#FF0033"}>
                     {this.state.selectedSighting.imageWithHighestAccuracy.accuracy * 100}%
                   </Box>
                   <Box fontSize={15} fontWeight="fontWeightBold" m={1} color="black">

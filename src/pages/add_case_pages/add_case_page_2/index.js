@@ -56,7 +56,7 @@ class AddCasePageTwo extends React.Component {
             missingFrom: this.personData.missingFrom,
             lastWearing: this.personData.lastWearing,
             additionalInfo: this.personData.additionalInfo,
-            selectedDate: this.personData.missingDate !== "" ? this.personData.missingDate : new Date(),
+            selectedDate: this.personData.missingDate !== "" ? new Date(this.personData.missingDate) : new Date(),
             imageFiles: [],
             lat: this.personData.lat,
             lng: this.personData.lng,
@@ -136,7 +136,7 @@ class AddCasePageTwo extends React.Component {
                     </div>
                     <div style={{ height: "50px" }} />
                     <div style={{ paddingLeft: "20%" }}>
-                        <label>Add Images for training <span style={{ color: "#34E795" }}>(The more images you add the better)</span></label>
+                        {/* <label>Add Images for training <span style={{ color: "#34E795" }}>(The more images you add the better)</span></label>
                         <div style={{ height: "20px" }} />
                         <div style={{ display: "inline-flex" }}>
                             <SlectedImages images={this.state.imageFiles} deleteFunction={function (image) {
@@ -155,7 +155,7 @@ class AddCasePageTwo extends React.Component {
                                     </IconButton>
                                 </center>
                             </div>
-                        </div>
+                        </div> */}
                         <div style={{ height: "20px" }} />
                         <form name="case_details_form" onSubmit={this.handleSubmit} method="POST">
                             <label>Where did you see him/her last?</label>

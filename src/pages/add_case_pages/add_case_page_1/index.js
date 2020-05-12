@@ -203,7 +203,6 @@ class AddCasePageOne extends React.Component {
                                         <AddIcon />
                                     </IconButton>
                                 </center>
-
                             </div>
                         }
                         <div style={{ height: "5px" }} />
@@ -321,10 +320,10 @@ class AddCasePageOne extends React.Component {
                             </div>
                             <div style={{ height: "10px" }} />
                             <label>Height<span style={{ color: "#34E795" }}> (in meters)</span></label>
-                            <input onChange={(e) => this.setState({ height: e.target.value })} value={this.state.height} className="input" type="text" autoComplete="off" required pattern="^[0-9]*$"></input>
+                            <input onChange={(e) => this.setState({ height: e.target.value })} value={this.state.height} className="input" type="text" autoComplete="off" required pattern="^[-+]?\d*\.?\d*$"></input>
                             <div style={{ height: "10px" }} />
                             <label>Weight<span style={{ color: "#34E795" }}> (in kg)</span></label>
-                            <input onChange={(e) => this.setState({ weight: e.target.value })} value={this.state.weight} className="input" type="text" autoComplete="off" required pattern="^[0-9]*$"></input>
+                            <input onChange={(e) => this.setState({ weight: e.target.value })} value={this.state.weight} className="input" type="text" autoComplete="off" required pattern="^[-+]?\d*\.?\d*$"></input>
                             <div style={{ height: "40px" }} />
                             <div style={{ width: "95%", textAlign: "right" }}>
                                 <Button type="submit" style={{ padding: "5px 15px", fontWeight: "bold", borderRadius: "10px", backgroundColor: "white", color: "black", fontSize: "25px", fontFamily: "Consolas" }}>

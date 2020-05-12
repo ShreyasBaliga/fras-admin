@@ -1,12 +1,11 @@
 .outer {
-  background-color: #34E795;
   width: 15px;
   height: 15px; 
   position: relative;
   border-radius: 50%;
 }
 
-.inner {
+/* .inner {
   
   background-color: #34E795;
   opacity: 0.1 !important;
@@ -17,7 +16,7 @@
   position: relative;
   border-radius: 50%;
   z-index: 1;
-}
+} */
 .map_container {
   height: 400px;
   width: 100%;
