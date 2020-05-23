@@ -1,7 +1,12 @@
 {
   "main.css": "static/css/main.ecff07a9.css",
   "main.css.map": "static/css/main.ecff07a9.css.map",
+<<<<<<< Updated upstream
   "main.js": "static/js/main.70fa3cee.js",
   "main.js.map": "static/js/main.70fa3cee.js.map",
+=======
+  "main.js": "static/js/main.23dd4706.js",
+  "main.js.map": "static/js/main.23dd4706.js.map",
+>>>>>>> Stashed changes
   "static\\media\\background.png": "static/media/background.62b6f628.png"
 }
