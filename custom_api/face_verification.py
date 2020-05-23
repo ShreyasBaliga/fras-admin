@@ -25,7 +25,7 @@ db = firestore.client()
 def recognise_face():
 
     # Fetch missingPersonId and images posted by the user
-    personId = request.json['missingPersonId']
+    personId = request.json['issueNumber']
     sighted_image_list = request.json['images']
 
     # Fetch the document of corresponding missing person from firestore and store his image URL
@@ -88,8 +88,9 @@ def createAndStoreData(results, predictions, sighted_image_list):
         'longitude': request.json['longitude'],
         'wasAlone': request.json['wasAlone'],
         'contactDetails': request.json['contactDetails'],
-        'missingPersonId': request.json['missingPersonId'],
+        'issueNumber': request.json['issueNumber'],
         'additionalPersonDescription': request.json['additionalPersonDescription'],
+        'sightedAt': request.json['sightedAt'],
         'predictions': predictions,
         'imageWithHighestAccuracy': {
             'accuracy': max(results),
