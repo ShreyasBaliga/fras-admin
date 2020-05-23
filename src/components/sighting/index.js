@@ -62,30 +62,26 @@ class Sightings extends React.Component {
                 Info
               </div>
             </div >
-            <tbody>
-              {
-                this.props.sightings.docs.length == 0 ?
-                  <tr>
-                    <td colSpan="4">
-                      <Typography component="div" style={{ display: "inline-block" }}>
-                        <Box fontSize={18} fontWeight="fontWeightLight" m={1} color="white">
-                          NO DATA FOUND
-                    </Box>
-                      </Typography>
-                    </td>
-                  </tr> :
+            {this.props.sightings.docs.length == 0 ?
+              <div style={{
+                height: "400px", fontSize: "1.5rem", color: "white", fontWeight: "bold", padding: "150px 0", textAlign: "center"
+              }}>
+                No Sightings Reported
+              </div> :
+              <tbody>
+                {
                   this.props.sightings.docs.map(function (sighting, index) {
                     let color = "#FF0033"
-                    if (sighting.data().accuracy > 0.6)
+                    if (sighting.data().imageWithHighestAccuracy.accuracy > 0.6)
                       color = "#34E795"
-                    else if (sighting.data().accuracy > 0.4 && sighting.data().accuracy < 0.59)
+                    else if (sighting.data().imageWithHighestAccuracy.accuracy > 0.4 && sighting.data().imageWithHighestAccuracy.accuracy < 0.59)
                       color = "#FFF23A"
 
                     return (
                       <tr key={index} style={{ color: color, fontFamily: "Consolas" }}>
                         <td>{sighting.data().location}</td>
-                        <td >{"10:55"}</td>
-                        <td>{sighting.data().accuracy * 100}</td>
+                        <td>{new Date(sighting.data().sightedAt).toLocaleTimeString()}</td>
+                        <td>{(sighting.data().imageWithHighestAccuracy.accuracy * 100).toFixed(2)}</td>
                         <td>{
                           <IconButton onClick={() => this.handleModalOpen(sighting.data())} style={{ color: color }}>
                             <InfoOutlinedIcon />
@@ -94,8 +90,9 @@ class Sightings extends React.Component {
                       </tr>
                     )
                   }.bind(this))
-              }
-            </tbody>
+                }
+              </tbody>
+            }
           </table >
           <Modal
             aria-labelledby="simple-modal-title"
@@ -123,10 +120,13 @@ class Sightings extends React.Component {
                 <div style={{ width: "20px", display: "inline-block" }}></div>
                 <Typography component="div" style={{ display: "inline-block" }}>
                   <Box fontSize={33} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color={this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.6 ? "#34E795" : this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.4 && this.state.selectedSighting.imageWithHighestAccuracy.accuracy < 0.59 ? "#FFF23A" : "#FF0033"}>
-                    {this.state.selectedSighting.imageWithHighestAccuracy.accuracy * 100}%
+                    {(this.state.selectedSighting.imageWithHighestAccuracy.accuracy * 100).toFixed(2)}%
                   </Box>
                   <Box fontSize={15} fontWeight="fontWeightBold" m={1} color="black">
-                    {this.state.selectedSighting.location}<br />10:55
+                    {this.state.selectedSighting.location}<br />
+                  </Box>
+                  <Box fontSize={15} fontWeight="fontWeightBold" m={1} color="black">
+                    {new Date(this.state.selectedSighting.sightedAt).toLocaleTimeString()}
                   </Box>
                   <Box fontSize={15} fontWeight="fontWeightBold" m={1} color="black">
                     Was Alone : {this.state.selectedSighting.wasAlone}

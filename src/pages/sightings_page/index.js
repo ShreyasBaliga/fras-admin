@@ -9,6 +9,8 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import history from '../../history';
+import Switch from '@material-ui/core/Switch';
+
 
 import "./index.css"
 
@@ -22,6 +24,20 @@ const ColorLinearProgress = withStyles({
         backgroundColor: '#00695c',
     },
 })(LinearProgress);
+const GreenSwitch = withStyles({
+    switchBase: {
+        color: '#34E795',
+        '&$checked': {
+            color: '#34E795',
+        },
+        '&$checked + $track': {
+            backgroundColor: '#00695c',
+        },
+    },
+    checked: {},
+    track: {},
+})(Switch);
+var db = firebase.firestore();
 
 class SightingsPage extends React.Component {
     constructor(props) {
@@ -30,7 +46,22 @@ class SightingsPage extends React.Component {
             isLoading: true,
             personData: this.props.location.state.personData,
             sightingData: null,
+            customApi: false
         }
+
+        this.getData = this.getData.bind(this)
+        this.handleSwitch = this.handleSwitch.bind(this)
+    }
+    getData(collectionName) {
+        let issue_number = parseInt(this.props.location.state.personData.issueNumber);
+        db.collection(collectionName).where('issueNumber', '==', issue_number).get().then(snapshots => {
+            this.setState({
+                isLoading: false,
+                sightingData: snapshots
+            })
+        }, err => {
+            console.log(`Encountered error: ${err}`);
+        });
     }
     componentWillMount() {
         firebase.auth().onAuthStateChanged((authenticated) => {
@@ -40,20 +71,18 @@ class SightingsPage extends React.Component {
         })
     }
     componentDidMount() {
-        var db = firebase.firestore();
-        let issue_number = parseInt(this.props.location.state.personData.issueNumber);
-
-        db.collection('sightings').where('issueNumber', '==', issue_number).get().then(snapshots => {
-
-            this.setState({
-                isLoading: false,
-                sightingData: snapshots
-            })
-        }, err => {
-            console.log(`Encountered error: ${err}`);
-        });
+        this.getData('sightings')
     }
+    handleSwitch(event) {
+        if (event.target.checked)
+            this.getData('sightings_custom_api')
+        else
+            this.getData('sightings')
+        this.setState({
+            customApi: event.target.checked
+        })
 
+    }
     render() {
         return this.state.isLoading ? (
             <div
@@ -97,7 +126,14 @@ class SightingsPage extends React.Component {
                         </div>
 
                     </div>
-                    <div style={{ height: "30px" }}></div>
+                    <div style={{ height: "50px", display: "block", textAlign: "end", color: "white" }}>
+                        Custom API
+                        <GreenSwitch
+                            checked={this.state.customApi}
+                            onChange={this.handleSwitch}
+                            inputProps={{ 'color': 'red' }}
+                        />
+                    </div>
                     {
                         this.state.sightingData !== null &&
                         <Grid container spacing={5}>
