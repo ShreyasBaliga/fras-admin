@@ -109,7 +109,7 @@ class SightingsPage extends React.Component {
                         <div style={{ width: "20px", display: "inline-block" }} />
                         <Typography component="div" style={{ display: "inline-block" }}>
                             <Box fontSize={30} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color="white">
-                                m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                                F.R.A.S
                         </Box>
                             <Box fontSize={18} fontFamily="Consolas" fontWeight="fontWeightLight" m={1} color="white">
                                 {this.state.personData.name.toUpperCase()}
