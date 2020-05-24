@@ -126,7 +126,7 @@ class AddCasePageTwo extends React.Component {
                 <div className="right-panel">
                     <div style={{ width: "100%", textAlign: "center", paddingTop: "25px" }}>
                         <Box fontSize={35} fontFamily="Consolas" fontWeight="fontWeightLight" color="white">
-                            m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                            F.R.A.S
                         </Box>
                     </div>
                     <div style={{ position: "absolute", top: 10, right: "50px" }}>

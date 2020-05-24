@@ -16,7 +16,7 @@ CORS(app)
 
 # Initialise firebase app and client
 cred = credentials.Certificate(
-    'ifra-3d775-firebase-adminsdk-8jb73-ee58799393.json')
+    'ifra-3d775-firebase-adminsdk-8jb73-10d73d5f86.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 

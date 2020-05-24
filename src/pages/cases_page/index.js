@@ -129,7 +129,7 @@ class CasesPage extends React.Component {
                         <div style={{ width: "33%", textAlign: "center" }}>
                             <Typography component="div">
                                 <Box fontSize={35} fontFamily="Consolas" fontWeight="fontWeightLight" color="white">
-                                    m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                                    F.R.A.S
                         </Box>
                             </Typography>
                         </div>

@@ -153,7 +153,7 @@ class AddCasePageThree extends React.Component {
                     <div>
                         <div style={{ width: "100%", textAlign: "center", paddingTop: "25px" }}>
                             <Box fontSize={35} fontFamily="Consolas" fontWeight="fontWeightLi,ght" color="white">
-                                m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                                F.R.A.S
                         </Box>
                         </div>
                         <div style={{ position: "absolute", top: 10, right: "50px" }}>

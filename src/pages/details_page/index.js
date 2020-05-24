@@ -115,7 +115,7 @@ class DetailsPage extends React.Component {
             <div className="details_page_container">
                 <center>
                     <Box fontSize={40} fontFamily="Consolas" fontWeight="fontWeightLight" color="white">
-                        m<span style={{ color: "#34E795" }}>i</span>ss<span style={{ color: "#34E795" }}>i</span>ng
+                        F.R.A.S
                     </Box>
                 </center>
                 <div style={{ position: "absolute", right: "50px", top: "25px" }}>

@@ -22,3 +22,5 @@ yarn-error.log*
 # Python
 __pycache__
 
+/custom_api/ifra-3d775-firebase-adminsdk-8jb73-10d73d5f86.json
+
