@@ -74,7 +74,7 @@ class Sightings extends React.Component {
                     let color = "#FF0033"
                     if (sighting.data().imageWithHighestAccuracy.accuracy > 0.6)
                       color = "#34E795"
-                    else if (sighting.data().imageWithHighestAccuracy.accuracy > 0.4 && sighting.data().imageWithHighestAccuracy.accuracy < 0.59)
+                    else if (sighting.data().imageWithHighestAccuracy.accuracy > 0.4 && sighting.data().imageWithHighestAccuracy.accuracy <= 0.6)
                       color = "#FFF23A"
 
                     return (
@@ -119,7 +119,7 @@ class Sightings extends React.Component {
                   src={this.state.selectedSighting.imageWithHighestAccuracy.image === "" ? this.state.selectedSighting.images[0] : this.state.selectedSighting.imageWithHighestAccuracy.image} />
                 <div style={{ width: "20px", display: "inline-block" }}></div>
                 <Typography component="div" style={{ display: "inline-block" }}>
-                  <Box fontSize={33} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color={this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.6 ? "#34E795" : this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.4 && this.state.selectedSighting.imageWithHighestAccuracy.accuracy < 0.59 ? "#FFF23A" : "#FF0033"}>
+                  <Box fontSize={33} fontFamily="Consolas" fontWeight="fontWeightBold" m={1} color={this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.6 ? "#34E795" : this.state.selectedSighting.imageWithHighestAccuracy.accuracy > 0.4 && this.state.selectedSighting.imageWithHighestAccuracy.accuracy <= 0.6 ? "#FFF23A" : "#FF0033"}>
                     {(this.state.selectedSighting.imageWithHighestAccuracy.accuracy * 100).toFixed(2)}%
                   </Box>
                   <Box fontSize={15} fontWeight="fontWeightBold" m={1} color="black">
